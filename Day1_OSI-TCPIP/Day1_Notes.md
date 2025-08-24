@@ -1,69 +1,62 @@
-Day 1 – OSI vs TCP/IP & Packet Capture
-
+Day 1 – OSI Model, TCP/IP & Wireshark Basics
 🔹 1. OSI Model (7 Layers)
-Layer	Function	Example Protocols
 
-7. Application	User interaction	HTTP, FTP, DNS
-6. Presentation	Data translation, encryption	SSL/TLS, JPEG
-5. Session	Session management	NetBIOS, RPC
-4. Transport	Reliable delivery, segmentation	TCP, UDP
-3. Network	Routing packets	IP, ICMP
-2. Data Link	Frames, MAC addressing	Ethernet, ARP
-1. Physical	Transmission media	Cables, Wi-Fi
-   
+Application Layer – User applications like HTTP, FTP, DNS.
+
+Presentation Layer – Encryption, compression, data formatting.
+
+Session Layer – Establishes, maintains, and terminates sessions.
+
+Transport Layer – Ensures reliable delivery (TCP/UDP).
+
+Network Layer – Logical addressing (IP) and routing.
+
+Data Link Layer – MAC addressing and error detection.
+
+Physical Layer – Physical transmission: cables, signals, hardware.
+
 🔹 2. TCP/IP Model (4 Layers)
-Layer	Matches OSI Layer(s)	Protocols
-Application	Application + Presentation + Session	HTTP, FTP, DNS, SMTP
-Transport	Transport	TCP, UDP
-Internet	Network	IP, ICMP, ARP
-Network Access	Data Link + Physical	Ethernet, Wi-Fi
 
-🔹 3. Common Ports
-Protocol	Port	Transport
-HTTP	80	TCP
-HTTPS	443	TCP
-FTP	21	TCP
-SSH	22	TCP
-DNS	53	TCP/UDP
-ICMP (Ping)	N/A	Network Layer
+Application Layer – Protocols (HTTP, DNS, SMTP).
 
+Transport Layer – Responsible for end-to-end delivery (TCP/UDP).
 
-🔹 4. Practical Task – TCP 3-Way Handshake
-Steps in Kali Linux:
+Internet Layer – IP addressing, routing.
 
-Install Wireshark:
+Network Access Layer – Ethernet, ARP, physical transmission.
 
-sudo apt update && sudo apt install wireshark -y
+🔹 3. TCP 3-Way Handshake
 
+Step 1: SYN → Client requests a connection.
 
-Run Wireshark:
+Step 2: SYN/ACK → Server acknowledges request.
 
-sudo wireshark
+Step 3: ACK → Client confirms.
+✅ Secure TCP session established.
 
+🔹 4. Practical Task (Wireshark)
 
-Start capture on active interface (eth0 or wlan0).
+Install and open Wireshark.
 
-Open browser → Visit: http://example.com
+Start packet capture on your active network interface.
+
+Open browser → Visit http://example.com.
+
+Stop capture.
 
 Apply filter:
 
-tcp.flags.syn==1 || tcp.flags.ack==1
+http
 
 
-Identify 3 packets:
+Look for TCP 3-way handshake (SYN → SYN/ACK → ACK) packets.
 
-SYN → Client → Server
+Save screenshot → Day1_Wireshark/wireshark_handshake.png.
 
-SYN/ACK → Server → Client
+🔹 5. Key Takeaways
 
-ACK → Client → Server
+Understood OSI vs TCP/IP models.
 
+Learned how TCP handshake establishes reliable communication.
 
-
-🔹 5. Key Takeaway
-
-OSI vs TCP/IP model difference clear hua ✅
-
-TCP 3-way handshake samajh liya ✅
-
-Wireshark ka basic capture aur filter use karna seekh liya ✅
+Performed first hands-on task with Wireshark.
