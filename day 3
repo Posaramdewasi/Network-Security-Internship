@@ -1,0 +1,80 @@
+Day 3 – Windows Security Basics (Event Viewer & Logs)
+🔹 1. Why Windows Security Matters
+
+Windows is widely used in enterprise networks.
+
+SOC analysts need to monitor Windows systems for signs of attacks.
+
+Event Logs provide critical information for incident detection and response.
+
+🔹 2. Windows Event Viewer Overview
+
+Event Viewer is a Windows tool to view system, security, and application logs.
+
+Types of logs:
+
+System Logs – Events related to Windows system components.
+
+Security Logs – Authentication, user logons, permissions changes.
+
+Application Logs – Errors, warnings, and information from apps.
+
+Setup Logs – Windows setup events.
+
+Forwarded Events – Logs collected from other computers.
+
+🔹 3. Common Event IDs for Security Monitoring
+Event ID	Description
+4624	Successful account logon
+4625	Failed logon attempt
+4634	User logoff
+4672	Special privileges assigned to account
+4688	New process creation
+4703	Permissions changes
+🔹 4. Practical Task (Windows – Event Viewer)
+
+Open Event Viewer
+
+Press Win + R → Type eventvwr.msc → Press Enter
+
+Explore Logs:
+
+Navigate to Windows Logs → Security / System / Application
+
+Filter Events:
+
+Example: Security Log → Filter Current Log → Event ID = 4624 (Successful logon)
+
+Observe Event Details:
+
+Date & Time
+
+User Account
+
+Source IP (if available)
+
+Export Events (Optional):
+
+Right-click → Save Selected Events → Save as .evtx
+
+📸 Take 2 screenshots:
+
+Security log showing successful login → Day3_Windows/security_log.png
+
+System log showing system events → Day3_Windows/system_log.png
+
+🔹 5. Key Commands & Tools
+
+wevtutil qe Security /f:text /c:10 → Show last 10 Security events in Command Prompt
+
+Get-EventLog -LogName Security -Newest 20 → PowerShell command to retrieve latest 20 Security events
+
+🔹 6. Key Takeaways
+
+Learned how to access and navigate Windows Event Viewer ✅
+
+Identified important Event IDs for security monitoring ✅
+
+Practiced filtering and exporting logs for analysis ✅
+
+Understood the importance of Windows logs for SOC operations ✅
