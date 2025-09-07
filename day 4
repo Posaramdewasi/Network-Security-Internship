@@ -1,0 +1,105 @@
+Day 4 – Firewalls & Packet Filtering (Linux + Windows)
+🔹 1. What is a Firewall?
+
+A firewall is a network security device or software that monitors and controls incoming and outgoing network traffic.
+
+Firewalls enforce security policies and prevent unauthorized access.
+
+Types:
+
+Network-based firewall – Hardware device controlling traffic between networks.
+
+Host-based firewall – Software installed on a host machine (e.g., Windows Firewall, iptables).
+
+🔹 2. Firewall Basics in Linux
+Common Linux Firewalls
+
+ufw (Uncomplicated Firewall) – Simple firewall tool in Ubuntu/Kali.
+
+iptables – Powerful command-line firewall.
+
+Basic ufw Commands
+Command	Purpose
+sudo ufw status	Check firewall status
+sudo ufw enable	Enable firewall
+sudo ufw disable	Disable firewall
+sudo ufw allow 22/tcp	Allow SSH port
+sudo ufw deny 80/tcp	Block HTTP port
+sudo ufw reset	Reset firewall rules
+Practical Task (Linux)
+
+Check firewall status:
+
+sudo ufw status
+
+
+Enable firewall:
+
+sudo ufw enable
+
+
+Allow SSH and block HTTP:
+
+sudo ufw allow 22/tcp
+sudo ufw deny 80/tcp
+sudo ufw status
+
+
+
+🔹 3. Firewall Basics in Windows
+Windows Firewall
+
+Built-in security feature in Windows.
+
+Can allow/block programs and ports.
+
+Common Tasks
+
+Open Windows Firewall → Control Panel → System & Security → Windows Defender Firewall
+
+Allow an app → "Allow an app through firewall"
+
+Block a port:
+
+Advanced Settings → Inbound Rules → New Rule → Port → Block
+
+Practical Task (Windows)
+
+Open Windows Firewall
+
+Block a test port (e.g., 8080)
+
+Open Command Prompt → Test port blocked using telnet or Test-NetConnection
+
+🔹 4. Packet Filtering Basics
+
+Packet filtering allows/blocks network traffic based on:
+
+Source IP
+
+Destination IP
+
+Port number
+
+Protocol type (TCP/UDP)
+
+Helps in preventing attacks like unauthorized access and malware communication.
+
+Linux Example (iptables)
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j DROP
+sudo iptables -L -v
+
+Windows Example (PowerShell)
+New-NetFirewallRule -DisplayName "Block 8080" -Direction Inbound -LocalPort 8080 -Protocol TCP -Action Block
+Get-NetFirewallRule | Where-Object {$_.DisplayName -eq "Block 8080"}
+
+🔹 5. Key Takeaways
+
+Learned Linux and Windows firewalls ✅
+
+Practiced allowing/blocking ports and applications ✅
+
+Understood packet filtering concepts ✅
+
+Firewalls are essential for network security and SOC monitoring ✅
