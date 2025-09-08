@@ -1,0 +1,94 @@
+Day 5 – Logs & SIEM Basics (Splunk / Wazuh)
+🔹 1. What are Logs?
+
+Logs are records of events happening in a system, network, or application.
+
+They help analysts track user activity, detect security incidents, and troubleshoot issues.
+
+Types of logs:
+
+System logs – OS-related activity.
+
+Application logs – App errors, crashes, or updates.
+
+Security logs – Authentication attempts, access control, privileges.
+
+Network logs – Firewall, IDS/IPS traffic logs.
+
+🔹 2. What is SIEM?
+
+SIEM (Security Information and Event Management) is a solution that:
+
+Collects logs from multiple sources.
+
+Correlates and analyzes them.
+
+Generates alerts for suspicious activity.
+
+Examples: Splunk, Wazuh, ELK Stack, IBM QRadar.
+
+🔹 3. SIEM Workflow
+
+Log Collection – Gather logs from endpoints, servers, firewalls.
+
+Normalization – Convert logs into standard format.
+
+Correlation – Match patterns across logs to detect threats.
+
+Alerting – Trigger alerts for suspicious behavior.
+
+Reporting & Dashboards – Summarize incidents for SOC teams.
+
+🔹 4. Practical Task (Using Splunk Free or Wazuh)
+Option 1: Splunk (Free)
+
+Download and install Splunk Free (Linux/Windows).
+
+Add sample logs (Windows logs or Apache web logs).
+
+Run a simple query in Splunk Search:
+
+index=* sourcetype=wineventlog:security EventCode=4625
+
+
+→ Show failed login attempts.
+
+Create a simple dashboard showing login success vs failure.
+
+📸 Save screenshots:
+
+Splunk Search results → Day5_SIEM/splunk_failed_logins.png
+
+Dashboard view → Day5_SIEM/splunk_dashboard.png
+
+Option 2: Wazuh (Open Source SIEM)
+
+Install Wazuh (cloud or VM).
+
+Add a monitored endpoint (Windows/Linux).
+
+Generate test logs by failed login attempts.
+
+View alerts in Wazuh dashboard.
+
+📸 Save screenshots:
+
+Wazuh alert for failed logon → Day5_SIEM/wazuh_failed_login.png
+
+🔹 5. Key Commands (Linux for Log Checking)
+
+cat /var/log/auth.log → Check authentication logs.
+
+cat /var/log/syslog → Check system logs.
+
+tail -f /var/log/auth.log → Live log monitoring.
+
+🔹 6. Key Takeaways
+
+Learned what logs are and their importance in security. ✅
+
+Understood how SIEM tools (Splunk, Wazuh) help in threat detection. ✅
+
+Practiced log analysis queries and dashboards. ✅
+
+SIEM is a core skill for SOC Analysts. ✅
