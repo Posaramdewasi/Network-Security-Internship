@@ -1,0 +1,111 @@
+Day 9 – Phishing Analysis & Email Security
+🔹 1. What is Phishing?
+
+Phishing = Social engineering attack where attackers trick users into revealing sensitive data (passwords, banking info, etc.).
+
+Common methods:
+
+Email phishing – Fake emails pretending to be legit.
+
+Spear phishing – Targeted attacks against specific individuals.
+
+Whaling – Attacks targeting executives (CEO fraud).
+
+Smishing & Vishing – Phishing via SMS & phone calls.
+
+🔹 2. Common Signs of a Phishing Email
+
+Suspicious sender email (e.g., support@micros0ft.com
+).
+
+Urgent language (“Your account will be suspended!”).
+
+Malicious links (hover → doesn’t match text).
+
+Attachments with macros (e.g., invoice.docm).
+
+Poor grammar, spelling errors.
+
+🔹 3. Email Security Fundamentals
+
+SPF (Sender Policy Framework) – Prevents spoofing.
+
+DKIM (DomainKeys Identified Mail) – Ensures message integrity.
+
+DMARC (Domain-based Message Authentication, Reporting & Conformance) – Prevents domain impersonation.
+
+🔹 4. Tools for Phishing Analysis
+
+Email Header Analysis → Check “Received from”, SPF/DKIM.
+
+URL Analysis →
+
+VirusTotal
+
+PhishTank
+
+urlscan.io
+
+Attachment Analysis →
+
+Hybrid Analysis
+
+Any.Run Sandbox
+
+Decoding URLs → base64, hex encoded payloads.
+
+🔹 5. Practical Task
+Task A: Analyze an Email Header
+
+Copy email header from Gmail/Outlook.
+
+Use tool: MxToolbox Header Analyzer
+.
+
+Identify:
+
+Real sender IP.
+
+SPF/DKIM/DMARC results.
+
+Task B: Analyze a Suspicious URL
+
+Take a phishing sample URL (from PhishTank
+).
+
+Submit to VirusTotal / urlscan.io.
+
+Check if flagged as malicious.
+
+Task C: Analyze a Suspicious Attachment
+
+Download safe test sample from MalwareBazaar
+ or use EICAR file.
+
+Upload to Hybrid Analysis.
+
+Check execution behavior (C2 connections, registry changes).
+
+🔹 6. SOC Analyst Workflow for Phishing Investigation
+
+User reports suspicious email.
+
+Check email headers → Verify SPF/DKIM.
+
+Analyze URL/Attachment in sandbox.
+
+Search SIEM logs for other users receiving similar emails.
+
+Block domain/IP in firewall/proxy.
+
+Educate user to avoid clicking such links.
+
+🔹 7. Key Takeaways
+
+Learned email security fundamentals (SPF, DKIM, DMARC) ✅
+
+Practiced analyzing headers, URLs, and attachments ✅
+
+Understood SOC workflow for phishing response ✅
+
+Phishing analysis is a core skill for SOC Analysts ✅
