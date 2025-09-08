@@ -1,0 +1,122 @@
+Day 12 – Digital Forensics Basics (Windows + Linux Artifacts)
+🔹 1. What is Digital Forensics?
+
+Digital Forensics = Process of identifying, preserving, analyzing, and presenting digital evidence.
+
+Goal:
+
+Investigate cyber incidents.
+
+Collect evidence for legal/compliance.
+
+Understand attacker behavior.
+
+🔹 2. Digital Forensics Process
+
+Identification → Find where evidence exists (logs, memory, files).
+
+Preservation → Protect data from tampering.
+
+Collection → Extract artifacts safely.
+
+Examination & Analysis → Study evidence.
+
+Presentation → Report findings.
+
+🔹 3. Windows Forensics (Key Artifacts)
+
+Event Logs (Security, System, Application)
+
+Location: C:\Windows\System32\winevt\Logs
+
+Registry Keys
+
+User logins, startup programs, USB history.
+
+Prefetch Files
+
+Stores executed programs → C:\Windows\Prefetch
+
+Recycle Bin
+
+Deleted files.
+
+Memory Dump (RAM)
+
+Running processes, credentials.
+
+🔹 4. Linux Forensics (Key Artifacts)
+
+/var/log/auth.log → Authentication attempts.
+
+/var/log/syslog → System events.
+
+~/.bash_history → User commands.
+
+/etc/passwd & /etc/shadow → Users & password hashes.
+
+Network Connections
+
+netstat -tulnp
+ss -tulnp
+lsof -i
+
+🔹 5. Forensic Tools
+
+Windows: FTK Imager, Autopsy, Volatility (memory analysis), RegRipper.
+
+Linux: Sleuth Kit, Autopsy, grep/log analysis.
+
+Cross-Platform: Wireshark, Hashcalc, CyberChef.
+
+🔹 6. Practical Tasks
+Task A: Windows Event Log Analysis
+
+Open Event Viewer → Security Logs.
+
+Search Event ID:
+
+4624 = Successful login
+
+4625 = Failed login
+
+Export log as .evtx.
+
+Task B: Linux Log Analysis
+
+Show recent logins:
+
+last
+
+
+Show failed login attempts:
+
+grep "Failed password" /var/log/auth.log
+
+
+Show bash history:
+
+cat ~/.bash_history
+
+
+
+Task C: File Integrity Check (Both OS)
+
+Generate hash of a file:
+
+sha256sum important.txt
+
+
+Modify file.
+
+Generate hash again → Compare difference.
+
+🔹 7. Key Takeaways
+
+Learned digital forensics workflow ✅
+
+Practiced Windows artifacts (logs, registry, prefetch) ✅
+
+Practiced Linux artifacts (logs, bash history, network) ✅
+
+Hashing ensures evidence integrity ✅
