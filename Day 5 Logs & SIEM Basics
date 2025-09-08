@@ -55,7 +55,6 @@ index=* sourcetype=wineventlog:security EventCode=4625
 
 Create a simple dashboard showing login success vs failure.
 
-📸 Save screenshots:
 
 Splunk Search results → Day5_SIEM/splunk_failed_logins.png
 
@@ -71,7 +70,6 @@ Generate test logs by failed login attempts.
 
 View alerts in Wazuh dashboard.
 
-📸 Save screenshots:
 
 Wazuh alert for failed logon → Day5_SIEM/wazuh_failed_login.png
 
