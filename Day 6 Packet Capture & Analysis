@@ -1,0 +1,97 @@
+1. What is Packet Capture?
+
+Packet capture means recording network traffic for monitoring, troubleshooting, and security analysis.
+
+SOC Analysts use packet captures to:
+
+Detect malware traffic.
+
+Analyze suspicious connections.
+
+Investigate attacks (e.g., DoS, MITM).
+
+🔹 2. Tools for Packet Capture
+
+Wireshark – GUI-based packet analyzer.
+
+Tcpdump – CLI-based packet capture tool in Linux.
+
+🔹 3. TCP/IP Communication Review
+
+TCP 3-Way Handshake: SYN → SYN/ACK → ACK
+
+Common Ports:
+
+80 (HTTP), 443 (HTTPS), 22 (SSH), 53 (DNS)
+
+Packet analysis helps identify protocols, ports, and anomalies.
+
+🔹 4. Tcpdump Basics
+Common Commands
+Command	Purpose
+sudo tcpdump -i any	Capture all interfaces
+sudo tcpdump -i eth0	Capture packets on eth0
+sudo tcpdump -c 20	Capture only 20 packets
+sudo tcpdump -w capture.pcap	Save packets to file
+sudo tcpdump port 80	Capture HTTP traffic
+sudo tcpdump src host 192.168.1.10	Capture traffic from specific IP
+sudo tcpdump -nnvvXSs 0 -c 5	Verbose output for deep inspection
+🔹 5. Wireshark Basics
+Filters
+Filter	Purpose
+http	Show HTTP traffic
+tcp.port == 80	Show traffic on port 80
+ip.addr == 192.168.1.10	Show packets for a specific IP
+tcp.flags.syn == 1	Show SYN packets
+dns	Show DNS queries
+Key Features
+
+Follow TCP Stream – Reconstructs conversations.
+
+Statistics → Protocol Hierarchy – Shows traffic types.
+
+Export Objects (HTTP) – Extract downloaded files.
+
+🔹 6. Practical Task
+Task A: Using Tcpdump
+
+Run:
+
+sudo tcpdump -i eth0 -c 50 -w day6_capture.pcap
+
+
+Open the .pcap file in Wireshark.
+
+Apply filter http and visit http://example.com.
+
+Task B: Using Wireshark
+
+Start capture on your active interface.
+
+Visit: http://example.com.
+
+Stop capture.
+
+Apply filter: http.
+
+Show the TCP 3-way handshake (SYN, SYN/ACK, ACK).
+
+Task C: DNS Analysis
+
+Open Wireshark.
+
+Apply filter: dns.
+
+Visit openai.com.
+
+Observe DNS query and response.
+
+🔹 7. Key Takeaways
+
+Learned tcpdump for CLI-based packet capture. ✅
+
+Practiced Wireshark filters for analyzing protocols. ✅
+
+Observed TCP 3-way handshake & DNS resolution. ✅
+
+Packet capture is critical for incident response and threat hunting. ✅
