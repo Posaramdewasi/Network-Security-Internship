@@ -1,0 +1,79 @@
+Day 10 – SIEM Use Cases & Alert Tuning
+🔹 1. What is a SIEM Use Case?
+
+A SIEM use case = A security scenario we want to detect using logs.
+
+Example:
+
+Multiple failed logins from same IP → Brute Force Attack.
+
+Traffic to blacklisted IP → C2 Communication.
+
+Large data transfer outside network → Data Exfiltration.
+
+🔹 2. Common SOC Use Cases
+Use Case	Log Source	Detection Logic
+Brute Force Login	Windows/Linux logs	10 failed logins in 5 mins
+Privilege Escalation	Windows Security logs	User added to Administrators group
+Malware Communication	Proxy/Firewall	Traffic to known malicious IP/domain
+Suspicious File Execution	Endpoint logs	File executed from %TEMP% folder
+Data Exfiltration	Firewall/DLP	Large outbound transfer on unusual port
+🔹 3. What is Alert Tuning?
+
+Alert Tuning = Optimizing SIEM alerts to reduce false positives.
+
+Example:
+
+If every login attempt creates an alert → too noisy.
+
+Instead, tune to alert only if login attempts > 10 in 5 mins.
+
+Goal = Accurate alerts that SOC Analysts can act on.
+
+🔹 4. Practical Task
+Task A: Splunk Query for Brute Force Detection
+index=security sourcetype=wineventlog:security EventCode=4625
+| stats count by src_ip, user
+| where count > 5
+
+
+Detects failed logins (EventCode 4625) with more than 5 attempts.
+
+Task B: Wazuh Use Case
+
+Install Wazuh agent on a Linux machine.
+
+Generate failed SSH logins:
+
+ssh wronguser@localhost
+
+
+Check Wazuh → Alerts triggered.
+
+Task C: ELK Query (Kibana)
+event.code: "4625" AND host.name: "windows-server"
+
+
+Detects failed logins in Kibana.
+
+🔹 5. SOC Workflow for Alert Handling
+
+Alert Triggered → SIEM raises event.
+
+Triage → Analyst checks severity, user, source.
+
+Investigate → Look at related logs (firewall, proxy, endpoint).
+
+Respond → Block IP, disable account, escalate incident.
+
+Tune → If false positive, refine rules.
+
+🔹 6. Key Takeaways
+
+Learned what SIEM Use Cases are. ✅
+
+Practiced creating detection rules in Splunk, Wazuh, ELK. ✅
+
+Understood alert tuning to reduce false positives. ✅
+
+Alert handling workflow is the daily job of SOC Analysts. ✅
