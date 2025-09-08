@@ -1,0 +1,120 @@
+Day 11 – Incident Response Basics (SOC Playbooks & IR Process)
+🔹 1. What is Incident Response (IR)?
+
+Incident Response = A structured approach to detect, contain, and recover from security incidents.
+
+Goal: Minimize damage & restore operations quickly.
+
+Handled by SOC Analysts + IR Team.
+
+🔹 2. NIST Incident Response Lifecycle
+
+Preparation → Build tools, policies, playbooks.
+
+Detection & Analysis → Identify suspicious activity.
+
+Containment → Stop the attack from spreading.
+
+Eradication → Remove malicious files/backdoors.
+
+Recovery → Restore systems, monitor for reinfection.
+
+Lessons Learned → Document incident & improve defenses.
+
+🔹 3. SOC Playbooks (Response Guides)
+
+A playbook = Step-by-step guide for handling a specific incident.
+
+Example Playbooks
+
+Phishing Attack:
+
+User reports suspicious email.
+
+Check headers, URLs, attachments.
+
+Block malicious domain.
+
+Hunt similar emails in SIEM.
+
+Brute Force Attack:
+
+SIEM alert → multiple failed logins.
+
+Identify source IP.
+
+Block IP at firewall.
+
+Reset affected user passwords.
+
+Malware Infection:
+
+Endpoint alert triggered.
+
+Isolate host from network.
+
+Run malware scan + remove.
+
+Collect artifacts for analysis.
+
+🔹 4. Practical Task
+Task A: Create a Simple Playbook (Phishing)
+
+Make a flowchart:
+
+📌 Example steps:
+
+User reports email → SOC receives alert.
+
+SOC Analyst checks headers & URLs.
+
+If malicious → block domain/IP.
+
+Search SIEM for other recipients.
+
+Escalate if widespread.
+
+
+Task B: Simulate an Incident (Linux SSH Brute Force)
+
+On attacker machine:
+
+hydra -l root -P passwords.txt ssh://127.0.0.1
+
+
+On defender machine: Check logs:
+
+tail -f /var/log/auth.log
+
+
+Response:
+
+Block attacker IP:
+
+sudo ufw deny from 192.168.1.10
+
+
+
+Task C: Lessons Learned Report
+
+Write a short Incident Report (1 page) with:
+
+Incident type: Brute Force SSH
+
+Detection: SIEM/Log alerts
+
+Response: Blocked IP, reset password
+
+Lessons: Enable 2FA, stricter password policy
+
+📄 Save file → Day11_IR/incident_report.md
+
+🔹 5. Key Takeaways
+
+Understood Incident Response Lifecycle ✅
+
+Learned SOC Playbooks for phishing, brute force, malware ✅
+
+Practiced incident simulation & response ✅
+
+Documentation is as important as detection ✅
