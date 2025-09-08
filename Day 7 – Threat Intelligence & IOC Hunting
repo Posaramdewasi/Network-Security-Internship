@@ -1,0 +1,98 @@
+Day 7 – Threat Intelligence & IOC Hunting
+🔹 1. What is Threat Intelligence?
+
+Threat Intelligence (TI) = Information about current & emerging cyber threats.
+
+It helps SOC Analysts:
+
+Detect attacks faster.
+
+Block malicious IPs/domains.
+
+Understand attacker Tactics, Techniques, and Procedures (TTPs).
+
+Types of Threat Intelligence:
+
+Strategic – High-level info for management (trends, risks).
+
+Tactical – Attack methods (phishing, malware families).
+
+Operational – Specific campaigns (APT groups, C2 servers).
+
+Technical – Indicators of Compromise (IOCs).
+
+🔹 2. What are IOCs (Indicators of Compromise)?
+
+IOCs are pieces of forensic data that indicate malicious activity.
+
+Examples:
+
+IP Address → 45.77.12.34 (known C2 server)
+
+Domain Name → evil-malware.com
+
+File Hash (MD5/SHA256) → Used to identify malware samples
+
+Email Address → attacker@example.com
+
+Registry Keys / File Paths → Persistence artifacts in Windows
+
+🔹 3. IOC Sources (Free Threat Feeds)
+
+AlienVault OTX
+
+Abuse.ch
+
+VirusTotal
+
+CIRCL Feeds
+
+🔹 4. IOC Hunting Workflow (SOC Analyst)
+
+Collect IOC (from threat feeds, reports, SIEM alerts).
+
+Search Logs (firewall, DNS, proxy, endpoint).
+
+Correlate Events (check multiple IOCs in different logs).
+
+Take Action – Block IP/domain, quarantine file, escalate incident.
+
+🔹 5. Practical Task
+Task A: Check Malicious IP/Domain
+
+Go to VirusTotal
+.
+
+Enter a sample malicious IP/domain (from threat feeds like Abuse.ch).
+
+Observe detection report.
+
+Task B: IOC Hunting in Logs (Linux)
+
+Suppose IOC = Malicious IP 45.77.12.34.
+
+Search in logs:
+
+grep "45.77.12.34" /var/log/auth.log
+grep "45.77.12.34" /var/log/syslog
+
+
+If IOC appears → alert triggered.
+
+Task C: SIEM Query (Splunk Example)
+
+Search for failed login attempts from IOC IP:
+
+index=security sourcetype=linux_secure "45.77.12.34"
+
+
+
+🔹 6. Key Takeaways
+
+Learned what Threat Intelligence is and why it’s important. ✅
+
+Understood Indicators of Compromise (IOCs). ✅
+
+Practiced IOC hunting using VirusTotal, log search, and SIEM queries. ✅
+
+IOC hunting is a core SOC Analyst responsibility. ✅
