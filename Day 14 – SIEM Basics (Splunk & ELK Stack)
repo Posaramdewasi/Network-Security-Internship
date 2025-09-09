@@ -1,0 +1,127 @@
+Day 14 – SIEM Basics (Splunk & ELK Stack)
+🔹 1. What is SIEM?
+
+SIEM = Security Information & Event Management
+
+Collects logs from multiple sources → correlates → detects threats.
+
+Core functions:
+
+Log Collection (Windows, Linux, Firewalls, IDS/IPS).
+
+Normalization (convert into readable format).
+
+Correlation (detect suspicious patterns).
+
+Alerting & Dashboarding.
+
+Incident Investigation.
+
+🔹 2. Popular SIEM Tools
+
+Splunk → Most used, powerful dashboards & queries.
+
+ELK Stack (Elasticsearch, Logstash, Kibana) → Open-source alternative.
+
+Microsoft Sentinel (Cloud-based SIEM).
+
+QRadar, ArcSight → Enterprise solutions.
+
+🔹 3. SIEM Workflow (How it works)
+
+Logs generated from endpoints, firewalls, servers.
+
+Logs forwarded to SIEM (via agents or syslog).
+
+SIEM parses & normalizes logs.
+
+Rules & Correlation detect suspicious activity.
+
+Alerts → SOC Analyst investigates.
+
+📌 Example:
+
+10 failed logins (Event ID 4625) from same IP in 5 minutes → Alert for Brute Force.
+
+🔹 4. Splunk Basics
+
+Query Language = SPL (Search Processing Language)
+
+Example Queries:
+
+index=security sourcetype=windows:security EventCode=4625
+
+
+→ Show all failed logins
+
+index=firewall action=blocked | stats count by src_ip
+
+
+→ Show top blocked IPs
+
+🔹 5. ELK Stack Basics
+
+Elasticsearch → Stores & indexes logs.
+
+Logstash → Collects & parses logs.
+
+Kibana → Visualization & dashboards.
+
+📌 Example Kibana Dashboard:
+
+Pie chart of login success vs failure.
+
+Line graph of traffic per hour.
+
+🔹 6. Practical Tasks
+Task A: Install Splunk (Free Version)
+
+Download from: https://www.splunk.com
+
+Start Splunk Web:
+
+./splunk start
+
+
+Login → Username/Password.
+
+📸 Save screenshot → Day14_SIEM/splunk_dashboard.png
+
+Task B: Import Sample Windows Logs
+
+Upload a .evtx Security Log file.
+
+Search with SPL:
+
+EventCode=4624 OR EventCode=4625
+
+
+Create chart → Successful vs Failed logins.
+
+
+Task C: Install ELK (Optional in Kali/Ubuntu)
+sudo apt update
+sudo apt install elasticsearch logstash kibana -y
+
+
+
+Task D: Simple Log Query in Kibana
+
+Import a log file.
+
+Search for failed logins.
+
+Create visualization.
+
+
+🔹 7. Key Takeaways
+
+Understood SIEM workflow ✅
+
+Learned Splunk SPL queries ✅
+
+Practiced log analysis & dashboarding ✅
+
+ELK = free alternative for Splunk ✅
+
+SIEM = Heart of SOC monitoring ✅
