@@ -1,0 +1,114 @@
+Day 18 – Endpoint Security & Sysmon (Windows Logging Deep Dive)
+🔹 1. What is Endpoint Security?
+
+Endpoint Security = Protecting computers, servers, laptops, and other devices from malware, exploits, and unauthorized access.
+
+Endpoint security tools provide:
+
+Antivirus / Anti-malware protection
+
+EDR (Endpoint Detection & Response)
+
+Logging for SOC analysis
+
+🔹 2. What is Sysmon?
+
+Sysmon (System Monitor) = Windows system service that logs detailed info about system activity.
+
+Part of Microsoft Sysinternals suite.
+
+Key Features:
+
+Logs process creation (with command line)
+
+Logs network connections
+
+Logs file creation and hashes
+
+Helps detect malware/attacker activity
+
+🔹 3. Key Sysmon Events
+Event ID	Description
+1	Process creation (includes command line)
+2	File creation time changed
+3	Network connection detected
+5	Process terminated
+7	Registry object changed
+10	File created/modified with hash info
+11	File deletion
+🔹 4. Practical Tasks
+Task A: Install Sysmon
+
+Download Sysmon from https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+
+Install with default logging:
+
+sysmon -i -accepteula
+sysmon -c sysmonconfig-export.xml
+
+
+Verify installation:
+
+sysmon -c
+
+
+📸 Screenshot → Day18_Sysmon/sysmon_installed.png
+
+Task B: Log Process Creation
+
+Run a test program (e.g., Notepad, Calculator).
+
+Open Event Viewer → Applications and Services Logs → Microsoft → Windows → Sysmon → Operational
+
+Check Event ID 1 → Process creation details (command line, user, timestamp)
+📸 Screenshot → Day18_Sysmon/process_creation.png
+
+Task C: Log Network Connections
+
+Open browser → visit http://example.com
+
+Check Event ID 3 in Sysmon logs → shows network connections
+📸 Screenshot → Day18_Sysmon/network_connection.png
+
+Task D: Capture File Creation & Hash
+
+Create a text file:
+
+echo "SOC Practice" > test.txt
+
+
+Check Event ID 10 → shows file hash & creation
+📸 Screenshot → Day18_Sysmon/file_hash.png
+
+Task E: Hunting with Sysmon Logs
+
+Use Splunk/ELK → ingest Sysmon logs
+
+Search for suspicious process or network connection:
+
+index=sysmon EventCode=1 Image="*powershell.exe"
+
+
+Flag unusual or unknown processes
+
+📸 Screenshot → Day18_Sysmon/splunk_sysmon_hunt.png
+
+🔹 5. Best Practices for Endpoint Security
+
+Always update antivirus & EDR tools
+
+Monitor Sysmon logs in SIEM
+
+Detect rare processes, network connections, or unusual hashes
+
+Isolate suspicious endpoints quickly
+
+🔹 6. Key Takeaways
+
+Learned what endpoint security is and its importance ✅
+
+Installed and configured Sysmon ✅
+
+Monitored process, network, and file activities ✅
+
+Integrated Sysmon logs into SIEM for hunting & detection ✅
