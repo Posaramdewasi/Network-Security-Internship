@@ -1,0 +1,105 @@
+Day 20 – Firewall & Proxy Security Basics
+🔹 1. What is a Firewall?
+
+Firewall = Network security device that monitors and controls incoming/outgoing traffic.
+
+Purpose:
+
+Block unauthorized access
+
+Allow legitimate traffic
+
+Prevent attacks (DoS, malware, intrusions)
+
+Types of Firewalls:
+
+Network Firewall → Protects entire network (hardware/software)
+
+Host-based Firewall → Protects individual endpoints (Windows Firewall, iptables)
+
+Next-Generation Firewall (NGFW) → Deep packet inspection, application filtering
+
+🔹 2. What is a Proxy Server?
+
+Proxy Server = Intermediary between client and internet.
+
+Purpose:
+
+Monitor web traffic
+
+Block malicious websites
+
+Cache content for speed
+
+Provide anonymity for users
+
+🔹 3. Firewall Rules Basics
+Rule	Description
+Allow	Permit traffic (e.g., HTTP/HTTPS)
+Deny / Block	Prevent traffic (e.g., Telnet, unknown IPs)
+NAT	Network Address Translation for internal network
+Port Forwarding	Map external port to internal service
+
+Rule Order Matters → First match is applied
+
+🔹 4. Firewall Logging & Monitoring
+
+Logs provide info on:
+
+Blocked connections
+
+Allowed traffic
+
+Suspicious IPs/ports
+
+SOC Analysts monitor firewall logs in SIEM to detect threats
+
+🔹 5. Practical Tasks
+Task A: Configure Windows Firewall
+
+Open Windows Defender Firewall → Advanced Settings
+
+Create Inbound Rule → Block TCP port 23 (Telnet)
+
+Test by trying to connect via Telnet from another machine
+
+Task B: Allow Only HTTP/HTTPS
+
+Create Inbound Rule → Allow TCP 80/443
+
+Deny all other ports (except default system ports)
+
+Test by accessing allowed and blocked services
+
+Task C: Proxy Logging
+
+Install Squid Proxy on Linux:
+
+sudo apt install squid -y
+sudo systemctl start squid
+sudo systemctl enable squid
+
+
+Configure browser to use proxy
+
+Access websites → Check log: /var/log/squid/access.log
+
+Task D: Detect Malicious Traffic
+
+Add ACL in Squid to block malicious domains (example.com)
+
+acl blocked dstdomain example.com
+http_access deny blocked
+
+
+Test by visiting blocked site → Should be denied
+
+🔹 6. Key Takeaways
+
+Learned firewall types, rules, and logging ✅
+
+Practiced Windows Firewall configuration ✅
+
+Learned proxy server monitoring and blocking traffic ✅
+
+Firewalls & proxies = first line of defense in SOC & network security ✅
