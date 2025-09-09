@@ -1,0 +1,104 @@
+Day 19 – Network Traffic Analysis & Wireshark Advanced
+🔹 1. What is Network Traffic Analysis (NTA)?
+
+Network Traffic Analysis = Monitoring and inspecting network traffic to detect anomalies, threats, or malicious activity.
+
+Goals:
+
+Identify suspicious connections
+
+Detect malware communication
+
+Troubleshoot network issues
+
+🔹 2. Wireshark Basics
+
+Wireshark = Open-source packet capture tool for analyzing network traffic.
+
+Key Features:
+
+Capture live packets
+
+Apply filters
+
+Inspect protocols (TCP, UDP, ICMP, HTTP, DNS, etc.)
+
+Follow streams (TCP/HTTP)
+
+🔹 3. Common Network Protocols
+Protocol	Port	Description
+TCP	0-65535	Reliable connection-oriented
+UDP	0-65535	Connectionless, fast
+ICMP	N/A	Ping, traceroute
+HTTP	80	Web traffic
+HTTPS	443	Secure web traffic
+DNS	53	Domain resolution
+SSH	22	Secure shell
+FTP	21/20	File transfer
+SMTP	25	Mail transfer
+🔹 4. Advanced Wireshark Filters
+
+Capture Filter: Filters traffic during capture
+
+Example: tcp port 80 → Capture only HTTP traffic
+
+Display Filter: Filters traffic after capture
+
+Example: ip.src == 192.168.1.10 && tcp.port == 443
+
+Follow Stream: Right-click packet → Follow → TCP/HTTP Stream
+
+Statistics: Analyze traffic trends, top talkers, protocol distribution
+
+🔹 5. Practical Tasks
+Task A: Capture Basic Traffic
+
+Open Wireshark → select interface → Start capture
+
+Open browser → visit http://example.com
+
+Stop capture → Apply filter: http
+📸 Screenshot → Day19_Wireshark/http_capture.png
+
+Task B: Inspect TCP 3-Way Handshake
+
+Filter: tcp
+
+Identify SYN → SYN/ACK → ACK packets
+📸 Screenshot → Day19_Wireshark/tcp_handshake.png
+
+Task C: Analyze DNS Requests
+
+Filter: dns
+
+Visit multiple websites
+
+Check resolved IP addresses and queries
+📸 Screenshot → Day19_Wireshark/dns_analysis.png
+
+Task D: Follow HTTP Stream
+
+Right-click HTTP GET request → Follow → HTTP Stream
+
+View request/response contents
+📸 Screenshot → Day19_Wireshark/http_stream.png
+
+Task E: Detect Suspicious Traffic
+
+Filter unusual ports or external IPs:
+
+ip.dst != 192.168.1.0/24
+
+
+Identify unknown external connections for further analysis
+📸 Screenshot → Day19_Wireshark/suspicious_traffic.png
+
+🔹 6. Key Takeaways
+
+Learned Wireshark capture & filtering techniques ✅
+
+Practiced TCP/IP 3-way handshake inspection ✅
+
+Analyzed DNS, HTTP, and suspicious traffic ✅
+
+Network Traffic Analysis is essential for SOC monitoring & incident response ✅
