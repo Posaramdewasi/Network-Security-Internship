@@ -1,0 +1,124 @@
+Day 13 – IDS & IPS Basics (Snort, Suricata, Zeek)
+🔹 1. IDS vs IPS
+
+IDS (Intrusion Detection System):
+
+Monitors traffic & raises alerts.
+
+Passive → Detects but does not block.
+
+IPS (Intrusion Prevention System):
+
+Detects & blocks malicious traffic.
+
+Active → Can drop packets, reset connections.
+
+📌 Example:
+
+IDS = CCTV camera → Only tells you if someone breaks in.
+
+IPS = Security guard → Stops the intruder in real-time.
+
+🔹 2. Types of Detection
+
+Signature-Based Detection
+
+Matches traffic against known attack signatures.
+
+Example: Detecting a known malware hash.
+
+Anomaly-Based Detection
+
+Detects unusual behavior compared to baseline.
+
+Example: User normally logs in from India, suddenly from Russia.
+
+🔹 3. Key IDS/IPS Tools
+🔸 Snort
+
+Open-source IDS/IPS.
+
+Rule-based detection.
+
+Modes: Sniffer, Packet Logger, NIDS.
+
+Example Rule (Detect ICMP Ping):
+
+alert icmp any any -> any any (msg:"ICMP Ping Detected"; sid:1000001;)
+
+🔸 Suricata
+
+IDS/IPS + Network Security Monitoring.
+
+Multi-threaded, faster than Snort.
+
+Supports JSON output for SIEMs.
+
+🔸 Zeek (formerly Bro)
+
+Network Security Monitoring tool.
+
+Focuses on network behavior analysis (not just packet signatures).
+
+Produces detailed logs (HTTP, DNS, SSL, Connections).
+
+🔹 4. Practical Tasks
+Task A: Install Snort (Linux/Kali)
+sudo apt update
+sudo apt install snort -y
+snort -V   # check version
+
+
+
+Task B: Run Snort in Sniffer Mode
+sudo snort -i eth0 -A console
+
+
+Monitors live packets.
+
+Stop with Ctrl + C.
+
+
+Task C: Test a Custom Snort Rule
+
+Create rule file local.rules:
+
+alert icmp any any -> any any (msg:"ICMP Ping Detected"; sid:1000001;)
+
+
+Run Snort with custom rule:
+
+sudo snort -A console -q -c /etc/snort/snort.conf -i eth0
+
+
+Ping from another machine:
+
+ping -c 2 <target_ip>
+
+
+Check alert in console.
+
+
+Task D: Suricata Test
+sudo apt install suricata -y
+suricata -V
+
+
+
+Task E: Zeek Test (Optional)
+sudo apt install zeek -y
+zeek --version
+
+
+
+🔹 5. Key Takeaways
+
+Understood IDS vs IPS difference ✅
+
+Learned about signature vs anomaly detection ✅
+
+Practiced with Snort rules ✅
+
+Installed & tested Snort, Suricata, Zeek ✅
+
+IDS/IPS = backbone of SOC monitoring & threat detection ✅
