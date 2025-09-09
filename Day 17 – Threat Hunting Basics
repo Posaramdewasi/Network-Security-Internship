@@ -1,0 +1,137 @@
+Day 17 – Threat Hunting Basics (Proactive SOC Skill)
+🔹 1. What is Threat Hunting?
+
+Threat Hunting = Proactively searching for hidden threats in an organization’s environment.
+
+Unlike alerts (reactive), hunting is manual + hypothesis-driven.
+
+Goal: Find undetected attacks, insider threats, or stealthy malware.
+
+🔹 2. Threat Hunting vs. SOC Monitoring
+
+SOC Monitoring:
+
+Relies on alerts from SIEM/IDS.
+
+Reactive (waits for something to trigger).
+
+Threat Hunting:
+
+Human-driven investigation.
+
+Proactive (searches before alerts happen).
+
+🔹 3. Threat Hunting Methodology (3 Steps)
+
+Hypothesis Building
+
+Example: “Maybe attacker is using PowerShell for persistence.”
+
+Investigation (Data Sources)
+
+SIEM logs (Splunk/ELK).
+
+Endpoint logs (Sysmon).
+
+Network logs (IDS/IPS, Zeek).
+
+Uncover & Validate
+
+Confirm if suspicious behavior is malicious.
+
+Extract Indicators of Compromise (IOCs).
+
+🔹 4. Hunting Data Sources
+
+Windows Logs
+
+Event ID 4688 → Process creation.
+
+Event ID 4624 → Successful login.
+
+Event ID 4625 → Failed login.
+
+Linux Logs
+
+/var/log/auth.log → Login attempts.
+
+/var/log/syslog → System events.
+
+Network Logs
+
+Snort/Suricata alerts.
+
+Zeek HTTP/DNS logs.
+
+🔹 5. Threat Hunting Tools
+
+SIEM: Splunk, ELK, Microsoft Sentinel.
+
+EDR (Endpoint Detection & Response): CrowdStrike, Velociraptor.
+
+Open-Source: OSQuery, Sysmon, Zeek.
+
+🔹 6. Practical Tasks
+Task A: Hunt for Suspicious Logins (Windows)
+
+Splunk Query:
+
+index=security EventCode=4625 OR EventCode=4624 | stats count by Account_Name, src_ip
+
+
+Detect brute force or unusual login sources.
+
+📸 Save screenshot → Day17_Hunting/windows_logins.png
+
+Task B: Hunt for Suspicious Processes (Sysmon + Splunk)
+
+Splunk Query:
+
+index=sysmon EventCode=1 (Image="*powershell.exe" OR Image="*cmd.exe") 
+| stats count by User, CommandLine
+
+
+Detect attackers abusing PowerShell.
+
+📸 Save screenshot → Day17_Hunting/sysmon_powershell.png
+
+Task C: Linux Hunting (Auth Logs)
+grep "Failed password" /var/log/auth.log
+grep "Accepted password" /var/log/auth.log
+
+
+Look for repeated failed logins from one IP.
+
+📸 Save screenshot → Day17_Hunting/linux_authlog.png
+
+Task D: Network Hunting with Zeek
+cat dns.log | grep "suspicious-domain"
+cat http.log | grep "exe"
+
+
+Look for malicious domains or suspicious downloads.
+
+📸 Save screenshot → Day17_Hunting/zeek_dns_http.png
+
+Task E: Create Hunting Report
+
+Make a simple report file (Markdown):
+
+Day17_Hunting/threat_hunt_report.md
+
+# Threat Hunt Report
+
+- Hypothesis: Possible brute force attempts.  
+- Data Source: Windows Security Logs (4625).  
+- Findings: Multiple failed logins from IP 203.0.113.45.  
+- Action Taken: Blocked IP, reset account password.  
+
+🔹 7. Key Takeaways
+
+Understood difference between SOC monitoring & threat hunting ✅
+
+Learned hunting methodology (Hypothesis → Data → Findings) ✅
+
+Practiced hunts in Windows, Linux, and Network logs ✅
+
+Created Threat Hunt Report ✅
