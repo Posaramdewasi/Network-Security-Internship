@@ -1,0 +1,133 @@
+Day 16 – Threat Intelligence Basics (MITRE ATT&CK, IOC Feeds, TI Platforms)
+🔹 1. What is Threat Intelligence (TI)?
+
+Threat Intelligence (TI): Actionable knowledge about adversaries (attackers), their tools, techniques, and infrastructure.
+
+Purpose:
+
+Identify threats before they cause damage.
+
+Improve detection rules in SIEM/IDS.
+
+Support incident response & hunting.
+
+🔹 2. Types of Threat Intelligence
+
+Strategic TI → Big-picture (Who is attacking? Why? Trends).
+
+Tactical TI → Adversary TTPs (Tools, Techniques, Procedures).
+
+Operational TI → Campaign-level info (Ongoing phishing/malware ops).
+
+Technical TI → Specific IOCs (Hashes, IPs, URLs, Domains).
+
+🔹 3. MITRE ATT&CK Framework
+
+ATT&CK = Adversarial Tactics, Techniques & Common Knowledge.
+
+A knowledge base of how attackers operate.
+
+Categories (Tactics):
+
+Initial Access
+
+Execution
+
+Persistence
+
+Privilege Escalation
+
+Defense Evasion
+
+Credential Access
+
+Discovery
+
+Lateral Movement
+
+Collection
+
+Exfiltration
+
+Command & Control (C2)
+
+📌 Example:
+
+T1566: Phishing → Technique for Initial Access.
+
+Detection Idea: Monitor suspicious emails with malicious attachments.
+
+🔹 4. IOC (Indicators of Compromise)
+
+File Hashes (MD5, SHA256) → Malware samples.
+
+Domains/IPs → Command & Control servers.
+
+URLs → Phishing links.
+
+Registry Keys/Processes → Persistence mechanisms.
+
+🔹 5. Threat Intel Sources (Free Feeds)
+
+AlienVault OTX → Open Threat Exchange.
+
+Abuse.ch → Malware & botnet trackers.
+
+MISP (Malware Information Sharing Platform).
+
+VirusTotal → Malware hash & file analysis.
+
+CIRCL Feeds, ThreatFox.
+
+🔹 6. Practical Tasks
+Task A: Explore MITRE ATT&CK
+
+Go to https://attack.mitre.org
+.
+
+Explore tactics & techniques.
+
+Take screenshot of one technique page (e.g., T1566 – Phishing).
+
+
+Task B: Collect IOC from Malware Sample
+
+Use sha256sum on sample file.
+
+Search the hash on VirusTotal
+.
+
+Extract related domains & IPs.
+
+
+Task C: Use Threat Intel Feed (AlienVault OTX)
+
+Register free at https://otx.alienvault.com
+.
+
+Search for a recent malware campaign.
+
+Export IOCs (IPs, domains, hashes).
+
+
+Task D: Create IOC File (CSV/MD)
+
+Example (CSV format):
+
+Type,Value,Description
+IP,45.77.23.11,C2 Server
+Domain,malicious-site.com,Phishing
+SHA256,abcd1234...,Ransomware sample
+
+
+Save as → Day16_TI/iocs.csv
+
+🔹 7. Key Takeaways
+
+Learned Threat Intel types (Strategic → Technical) ✅
+
+Understood MITRE ATT&CK mapping ✅
+
+Extracted IOCs from feeds & VirusTotal ✅
+
+Practiced creating IOC list for SOC use ✅
