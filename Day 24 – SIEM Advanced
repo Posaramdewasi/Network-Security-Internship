@@ -1,0 +1,107 @@
+Day 24 – SIEM Advanced (Correlation Rules, Alerts, Dashboards)
+🔹 1. What is Advanced SIEM?
+
+Advanced SIEM = Using SIEM not just for log collection, but for proactive threat detection using correlation, alerts, and dashboards.
+
+Purpose:
+
+Detect complex attacks
+
+Reduce false positives
+
+Visualize security posture
+
+🔹 2. Correlation Rules
+
+Correlation Rule = Combines multiple log events to identify suspicious activity.
+
+Example:
+
+10 failed logins (Event ID 4625) + 1 successful login from same IP → Alert for brute force
+
+Splunk Example SPL:
+
+index=security EventCode=4625 OR EventCode=4624
+| stats count by src_ip, user
+| where count > 5
+
+
+ELK Example (Kibana + Elastic Rule):
+
+Create threshold-based detection → Trigger alert when >5 failed logins in 10 min
+
+🔹 3. Alerts in SIEM
+
+Alerts = Notifications sent when suspicious behavior detected
+
+Types:
+
+Email → Notify SOC analyst
+
+Dashboard / Widget Highlight → Show top threats
+
+Webhook / API → Trigger automated response
+
+Best Practice: Configure alert thresholds to reduce false positives
+
+🔹 4. Dashboards
+
+Dashboards = Visual representation of security events
+
+Examples:
+
+Top failed logins by IP/user
+
+Blocked firewall connections
+
+Top processes per endpoint (Sysmon)
+
+Web traffic anomalies (HTTP, DNS)
+
+Splunk: Dashboard Panel → Add Visualization
+
+Kibana: Lens / Visualize → Charts / Tables / Graphs
+
+🔹 5. Practical Tasks
+Task A: Create Correlation Rule in Splunk
+
+Open Splunk → Search → Use SPL for failed + successful logins
+
+Save as Alert → Trigger on threshold > 5 failed logins
+
+Task B: Create Dashboard in Splunk
+
+Search for top blocked IPs from firewall logs
+
+index=firewall action=blocked | stats count by src_ip
+
+
+Save as Dashboard Panel
+
+Task C: Create Threshold Alert in Kibana (ELK)
+
+Go to Stack Management → Rules
+
+Create Threshold rule → >5 failed logins in 10 min
+
+Test alert by generating failed logins in lab
+
+Task D: Visualize Security Events in Kibana
+
+Use Lens to plot:
+
+Failed logins by IP
+
+Suspicious processes
+
+Web traffic anomalies
+
+🔹 6. Key Takeaways
+
+Learned correlation rules & thresholds ✅
+
+Created alerts for brute force & suspicious activities ✅
+
+Built visual dashboards in Splunk & Kibana ✅
+
+Advanced SIEM = proactive SOC monitoring & threat detection ✅
