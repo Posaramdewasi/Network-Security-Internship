@@ -1,0 +1,91 @@
+Day 26 – Threat Hunting Advanced (EDR, SIEM, Sysmon)
+🔹 1. What is Advanced Threat Hunting?
+
+Advanced Threat Hunting = Proactively searching for stealthy threats using multiple tools and data sources.
+
+Goal: Detect unknown attacks, malware, insider threats, or lateral movement.
+
+🔹 2. Key Tools for Advanced Hunting
+Tool	Purpose
+EDR (Endpoint Detection & Response)	Monitor endpoints, detect malicious activity, respond
+SIEM	Aggregate logs, correlate events, create alerts
+Sysmon	Detailed logging of processes, network connections, and file changes
+OSQuery	Query endpoint data like SQL database (processes, users, network)
+PowerShell / Scripts	Automate hunting tasks and log extraction
+🔹 3. Threat Hunting Methodology
+
+Hypothesis Creation
+
+Example: “Attacker may be using PowerShell to download malware.”
+
+Data Collection
+
+Sysmon logs (Event ID 1, 3, 10)
+
+EDR alerts (process, network, file events)
+
+SIEM logs (failed logins, network anomalies)
+
+Analysis & Detection
+
+Identify anomalies → Suspicious processes or network connections
+
+Look for IOC matches (hashes, IPs, domains)
+
+Response & Documentation
+
+Isolate endpoint, block IP, escalate incident
+
+Document findings in hunting report
+
+🔹 4. Practical Tasks
+Task A: Hunt Suspicious Processes (Sysmon + SIEM)
+
+Splunk Query:
+
+index=sysmon EventCode=1 Image="*powershell.exe"
+| stats count by User, CommandLine
+| where count > 3
+
+
+Detect unusual PowerShell activity
+
+Task B: Hunt Suspicious Network Connections (Sysmon + EDR)
+
+Filter Event ID 3 → External IPs not in whitelist
+
+index=sysmon EventCode=3
+| where dest_ip NOT IN ("192.168.1.0/24")
+
+
+Identify unknown connections for investigation
+
+Task C: OSQuery Hunting
+
+Query endpoints for:
+
+SELECT name, path, uid, gid FROM processes WHERE path LIKE '%temp%';
+
+
+Detect unusual executables in temp folder
+
+Task D: Hunting Report
+# Threat Hunting Report – 2025-09-09
+
+- Hypothesis: PowerShell misuse for malware download
+- Data Sources: Sysmon logs, EDR alerts, SIEM logs
+- Findings: Suspicious PowerShell processes from user 'testuser'
+- Actions Taken: Isolated endpoint, blocked external IP, updated IOC list
+
+
+📄 Save file → Day26_Hunting/threat_hunt_report.md
+
+🔹 5. Key Takeaways
+
+Learned advanced threat hunting methodology ✅
+
+Practiced hunting with Sysmon, SIEM, EDR, OSQuery ✅
+
+Created threat hunting reports ✅
+
+Advanced hunting = proactive SOC skill for detecting stealthy attacks ✅
