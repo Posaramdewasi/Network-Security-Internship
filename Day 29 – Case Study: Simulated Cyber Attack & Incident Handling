@@ -1,0 +1,97 @@
+Day 29 – Case Study: Simulated Cyber Attack & Incident Handling
+🔹 1. What is a Red vs Blue Exercise?
+
+Red Team → Acts as attacker (simulate phishing, brute force, malware).
+
+Blue Team (SOC) → Defends using SIEM, EDR, logs, incident response.
+
+Goal → Train SOC analysts to detect, analyze, and respond to real-world attacks.
+
+🔹 2. Attack Simulation (Red Team)
+Attack Scenario
+
+Initial Access → Attacker sends phishing email with malicious attachment.
+
+Execution → Victim opens attachment → malware executed.
+
+Persistence → Malware creates registry key for startup.
+
+Lateral Movement → Attacker runs brute force on another system.
+
+Exfiltration → Attacker sends sensitive files to external server.
+
+🔹 3. Defense (Blue Team SOC Tasks)
+Detection in SIEM/EDR
+
+Phishing Detection → Suspicious email flagged in SIEM.
+
+Process Execution → Sysmon Event ID 1 (powershell.exe suspicious script).
+
+Persistence → Registry modification (Sysmon Event ID 13).
+
+Brute Force Attempts → Windows Event ID 4625 (multiple failed logins).
+
+Data Exfiltration → High outbound traffic detected in firewall logs.
+
+Response Steps
+
+Isolate infected machine.
+
+Kill malicious process.
+
+Block attacker IP/domain in firewall.
+
+Reset compromised credentials.
+
+Document entire attack in report.
+
+🔹 4. Practical Tasks
+Task A: Simulate Attack in Lab (Optional)
+
+Use Kali Linux (Red Team) → Send phishing email or run brute force with Hydra.
+
+Use Windows VM (Victim) → Open suspicious file.
+
+📸 Screenshot → Day29_CaseStudy/red_team_attack.png
+
+Task B: Detect with SIEM
+
+Query logs in Splunk/ELK:
+
+index=security EventCode=4625 | stats count by src_ip, user
+
+
+Create alert for brute force detection.
+
+📸 Screenshot → Day29_CaseStudy/siem_bruteforce_alert.png
+
+Task C: Incident Response Report
+# Incident Response Report – Red vs Blue Exercise
+
+- **Date/Time**: 2025-09-10
+- **Attack Vector**: Phishing → Malware → Persistence → Brute Force → Data Exfiltration
+- **Detection**:
+  - SIEM logs: Failed logins (4625), Suspicious PowerShell
+  - Sysmon: Registry modification, process creation
+- **Actions Taken**:
+  1. Isolated infected endpoint
+  2. Killed malware process
+  3. Blocked attacker IP
+  4. Reset compromised account
+- **Lessons Learned**:
+  - Improve phishing awareness training
+  - Add IOC feeds to SIEM
+  - Tune detection rules for persistence
+
+
+📄 Save file → Day29_CaseStudy/incident_response_report.md
+
+🔹 5. Key Takeaways
+
+Experienced Red vs Blue simulation ✅
+
+Learned how to detect & respond to phishing, persistence, brute force, and exfiltration ✅
+
+Created incident response documentation ✅
+
+Built confidence for real-world SOC incident handling ✅
