@@ -1,0 +1,98 @@
+Day 25 – Incident Response Process & Playbooks
+🔹 1. What is Incident Response (IR)?
+
+Incident Response (IR) = Process of identifying, investigating, containing, and mitigating security incidents.
+
+Purpose:
+
+Minimize damage
+
+Restore normal operations
+
+Collect evidence for analysis
+
+🔹 2. Incident Response Phases (NIST Framework)
+Phase	Description
+Preparation	Policies, playbooks, training, tools ready
+Identification	Detect incidents (alerts from SIEM, firewall, EDR)
+Containment	Short-term & long-term steps to limit damage
+Eradication	Remove root cause (malware, vulnerable accounts)
+Recovery	Restore systems to normal operations
+Lessons Learned	Post-incident analysis to prevent recurrence
+🔹 3. SOC Playbooks
+
+Playbook = Predefined steps SOC Analysts follow for specific incidents.
+
+Examples:
+
+Phishing Email Alert
+
+Quarantine email → Check URLs & attachments → Block sender → Notify user → Document
+
+Malware Detection on Endpoint
+
+Isolate machine → Run antivirus / EDR scan → Collect logs → Remediate → Restore
+
+Unauthorized Login Attempt
+
+Verify IP → Lock account if malicious → Reset password → Alert SOC team
+
+🔹 4. Practical Tasks
+Task A: Create Incident Response Playbook (Phishing)
+
+Use Markdown:
+
+# Phishing Email Incident Playbook
+
+1. Quarantine suspicious email
+2. Analyze attachments & links
+3. Check IOC against Threat Intel
+4. Block sender/domain
+5. Notify affected users
+6. Document incident in SIEM ticket
+
+
+📄 Save file → Day25_IR/phishing_playbook.md
+
+Task B: Simulate Malware IR on Endpoint
+
+Use Windows VM → Run test malware in isolated lab
+
+Contain: Disconnect network
+
+Eradicate: Run antivirus + Sysmon logs
+
+Recover: Re-enable network, verify system
+
+Task C: Handle Unauthorized Login Incident
+
+Generate multiple failed login attempts → Check SIEM alerts
+
+Lock user account
+
+Investigate source IP → Block if malicious
+
+Task D: Document IR Incident
+
+Create a simple incident report:
+
+# Incident Report – Malware Infection
+
+- Date/Time: 2025-09-09 10:30
+- Type: Malware
+- Affected Endpoint: Windows 10 VM
+- Action Taken: Isolated endpoint, cleaned malware, restored system
+- Lessons Learned: Monitor Sysmon logs for suspicious processes
+
+
+📄 Save file → Day25_IR/incident_report.md
+
+🔹 5. Key Takeaways
+
+Learned incident response phases & SOC playbooks ✅
+
+Practiced handling phishing, malware, and unauthorized login incidents ✅
+
+Documented incidents with reports for tracking & learning ✅
+
+IR = critical for SOC efficiency & reducing damage ✅
