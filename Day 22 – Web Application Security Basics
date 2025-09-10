@@ -1,0 +1,86 @@
+Day 22 – Web Application Security Basics
+🔹 1. What is Web Application Security?
+
+Web Application Security = Protecting web apps from attacks that target their code, logic, or data.
+
+Purpose:
+
+Prevent unauthorized access
+
+Protect sensitive data (users, credentials, payment info)
+
+Maintain availability and integrity of web apps
+
+🔹 2. OWASP Top 10 (Most Critical Web Risks)
+#	Vulnerability	Description
+1	Injection	SQL, Command, LDAP injection attacks
+2	Broken Authentication	Weak login, session handling issues
+3	Sensitive Data Exposure	Data not encrypted or poorly protected
+4	XML External Entities (XXE)	Vulnerability in XML parsers
+5	Broken Access Control	Unauthorized actions allowed
+6	Security Misconfiguration	Default configs, open ports
+7	Cross-Site Scripting (XSS)	Injecting scripts into users’ browsers
+8	Insecure Deserialization	Code execution via unsafe object deserialization
+9	Using Components with Known Vulnerabilities	Vulnerable libraries or frameworks
+10	Insufficient Logging & Monitoring	SOC can’t detect breaches
+🔹 3. Key Web Security Tools
+Tool	Purpose
+Burp Suite	Web app proxy for intercepting and testing requests
+OWASP ZAP	Open-source alternative for web app testing
+DVWA	Damn Vulnerable Web App – training platform
+Nikto	Web server vulnerability scanner
+SQLMap	Automated SQL injection testing
+🔹 4. Practical Tasks
+Task A: Setup DVWA (Kali Linux)
+sudo apt update
+sudo apt install dvwa -y
+sudo service apache2 start
+sudo service mysql start
+
+
+Access http://localhost/DVWA in browser
+📸 Screenshot → Day22_WebSec/dvwa_setup.png
+
+Task B: SQL Injection Test
+
+Login to DVWA → set Security = Low
+
+Go to SQL Injection page
+
+Input: ' OR '1'='1 → see data bypass login
+
+Task C: Cross-Site Scripting (XSS) Test
+
+Go to XSS (Stored) page
+
+Input: <script>alert("XSS")</script>
+
+Submit → pop-up alert confirms vulnerability
+
+Task D: Burp Suite Interception
+
+Open Burp Suite → Proxy → Intercept ON
+
+Configure browser to use 127.0.0.1:8080
+
+Capture login or form request
+
+Modify parameters → Forward → Observe response
+
+Task E: Web Vulnerability Scan with Nikto
+nikto -h http://localhost/DVWA
+
+
+Detect misconfigurations, known vulnerabilities
+
+🔹 5. Key Takeaways
+
+Learned OWASP Top 10 web vulnerabilities ✅
+
+Practiced SQL Injection & XSS on DVWA ✅
+
+Learned intercepting & modifying requests using Burp Suite ✅
+
+Performed web server vulnerability scan with Nikto ✅
+
+Web app security knowledge is critical for SOC & network defense ✅
