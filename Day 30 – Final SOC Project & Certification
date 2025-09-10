@@ -1,0 +1,116 @@
+Day 30 – Final SOC Project & Certification
+🔹 1. Final Project Overview
+
+You will combine everything learned in 30 days into a single SOC Analyst project.
+
+Deliverables:
+
+Complete Case Study Report
+
+SIEM Dashboards & Alerts
+
+Incident Response Playbooks
+
+Threat Hunting Findings
+
+GitHub Repository (Portfolio)
+
+🔹 2. Project Structure
+
+📂 SOC_Final_Project/
+
+📄 README.md → Overview of project (summary + tools used)
+
+📄 incident_report.md → Documented incident case study (from Day 29)
+
+📄 playbooks/ → Phishing, Malware, Unauthorized Login playbooks
+
+📄 hunting/ → Sysmon + SIEM hunting queries
+
+📄 threat_intel/ → IOC list + report
+
+📸 screenshots/ → Wireshark, SIEM dashboards, malware sandbox, alerts
+
+🔹 3. Final Project Tasks
+Task A: SIEM Dashboard Showcase
+
+Create final dashboard in Splunk/ELK:
+
+Failed logins (4625)
+
+Malware detection
+
+Suspicious outbound traffic
+
+📸 Save screenshot → SOC_Final_Project/screenshots/final_dashboard.png
+
+Task B: Incident Handling Report
+
+Summarize Day 29 Red vs Blue case study into a polished IR report.
+📄 Save → SOC_Final_Project/incident_report.md
+
+Task C: Threat Hunting + IOC Integration
+
+Collect IOCs (from Day 28).
+
+Add them into SIEM and run detection queries.
+📸 Screenshot → SOC_Final_Project/screenshots/ioc_detection.png
+
+Task D: SOC Playbook Collection
+
+Create a folder playbooks/ with:
+
+phishing_playbook.md
+
+malware_playbook.md
+
+unauthorized_login.md
+
+Task E: GitHub Repository Setup
+
+Create repo → SOC-Analyst-30Days-Project
+
+Add all project files.
+
+Write README.md like this:
+
+# 🛡️ SOC Analyst 30 Days Project
+
+## Overview
+This repository contains my **30-day SOC Analyst training project**, where I practiced network security, SIEM, incident response, threat hunting, and malware analysis.
+
+## Contents
+- SIEM Dashboards & Alerts
+- Incident Response Reports
+- Threat Hunting Queries
+- Threat Intelligence (IOC Management)
+- SOC Playbooks (Phishing, Malware, Login Attempts)
+
+## Tools Used
+- Splunk / ELK
+- Wireshark
+- Sysmon
+- MISP / Threat Intel Feeds
+- YARA
+- Kali Linux
+
+## Author
+👤 POSARAM DEWASI | 📧 posurabari95@gmail.com
+
+🔹 4. Optional – Create PDF Report
+
+Combine your notes, screenshots, and incident reports into 1 PDF.
+
+Name: SOC_Analyst_Final_Report.pdf
+
+Use this as portfolio certificate to show in interviews.
+
+🔹 5. Key Takeaways
+
+You now have a complete SOC project portfolio ✅
+
+Ready to show recruiters on GitHub + PDF ✅
+
+Covers SIEM, IR, Threat Hunting, Threat Intel, Malware Analysis ✅
+
+Equivalent to a mini-internship project ✅
