@@ -1,0 +1,86 @@
+Day 28 – Threat Intelligence & IOC Management
+🔹 1. What is Threat Intelligence?
+
+Threat Intelligence (TI) = Process of collecting, analyzing, and sharing data about malicious activities (IOCs, TTPs, threat actors).
+
+Goal:
+
+Anticipate attacks
+
+Improve detection (SIEM, EDR)
+
+Reduce false positives
+
+🔹 2. Types of Threat Intelligence
+Type	Example	Purpose
+Strategic	Threat actor reports	High-level business decisions
+Tactical	MITRE ATT&CK techniques	Understand attack behavior
+Operational	Campaign reports, malware families	Defend against specific attacks
+Technical	IOCs (IPs, hashes, domains)	Feed into SIEM/EDR for detection
+🔹 3. IOC (Indicators of Compromise)
+
+Examples of IOCs:
+
+File Hashes → MD5, SHA1, SHA256
+
+Domains/URLs → malicious.com, update.fake.net
+
+IP Addresses → 192.168.1.50 connecting to external C2
+
+Registry Keys → Persistence mechanisms
+
+🔹 4. Threat Intel Platforms
+Tool	Purpose
+MISP (Malware Information Sharing Platform)	IOC sharing, threat feeds
+OpenCTI	Threat actor & campaign intelligence
+VirusTotal / Hybrid Analysis	IOC collection
+AlienVault OTX	Community threat intel feeds
+MITRE ATT&CK	Mapping adversary techniques
+🔹 5. Practical Tasks
+Task A: IOC Collection
+
+Collect IOCs from VirusTotal (file hash, domains, IPs).
+
+Save as JSON or CSV.
+📄 Save file → Day28_TI/ioc_list.csv
+
+Task B: MISP Integration
+
+Install MISP (or use online demo).
+
+Import IOC list into MISP.
+
+Create an event with malware family and related indicators.
+📸 Screenshot → Day28_TI/misp_event.png
+
+Task C: IOC Use in SIEM
+
+Import IOC list into Splunk/ELK.
+
+Example SPL (check logs against IOCs):
+
+index=security [| inputlookup ioc_list.csv | fields ip]
+
+
+📸 Screenshot → Day28_TI/siem_ioc_alert.png
+
+Task D: Threat Intel Report
+# Threat Intel Report – 2025-09-10
+
+- Source: VirusTotal, MISP
+- IOCs Collected: 5 IPs, 3 Domains, 2 File Hashes
+- Usage: Imported into SIEM for alerting
+- Benefit: Improved detection of malware callbacks
+
+
+📄 Save file → Day28_TI/threat_intel_report.md
+
+🔹 6. Key Takeaways
+
+Learned IOC collection, enrichment, and sharing ✅
+
+Practiced MISP/OpenCTI IOC management ✅
+
+Integrated IOCs into SIEM for detection ✅
+
+Threat intel = proactive defense for SOC analysts ✅
