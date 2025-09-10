@@ -1,0 +1,98 @@
+Day 23 – Cloud Security Basics
+🔹 1. What is Cloud Security?
+
+Cloud Security = Protecting cloud-based infrastructure, applications, and data.
+
+Purpose:
+
+Prevent unauthorized access
+
+Protect data in transit and at rest
+
+Ensure compliance and monitoring
+
+🔹 2. Key Cloud Service Providers
+Cloud	Key Security Features
+AWS (Amazon Web Services)	Security Groups, IAM, CloudTrail, VPC
+Azure	NSG (Network Security Groups), Azure AD, Monitor, Defender
+GCP (Google Cloud Platform)	IAM, VPC Firewall, Security Command Center
+🔹 3. Core Cloud Security Concepts
+🔸 IAM (Identity & Access Management)
+
+Control who can access resources
+
+Principle of Least Privilege → Users get only required access
+
+Examples: AWS IAM Users, Groups, Roles
+
+🔸 Security Groups / Firewalls
+
+Acts like virtual firewall
+
+Control inbound & outbound traffic by IP, port, protocol
+
+🔸 Cloud Monitoring & Logging
+
+AWS CloudTrail / Azure Monitor / GCP Logging
+
+Logs all API calls, configuration changes, and user activity
+
+🔸 Data Encryption
+
+At rest: EBS volumes, S3 buckets
+
+In transit: TLS/HTTPS
+
+🔹 4. Practical Tasks
+Task A: AWS Free Tier Setup
+
+Create AWS Free Tier account
+
+Launch EC2 instance (Linux)
+
+Assign Security Group → Allow SSH (22) and HTTP (80) only
+📸 Screenshot → Day23_Cloud/ec2_setup.png
+
+Task B: IAM User Creation
+
+Go to AWS IAM → Users → Add User
+
+Assign Programmatic Access + Console Access
+
+Attach ReadOnlyAccess policy
+📸 Screenshot → Day23_Cloud/iam_user.png
+
+Task C: Security Group Rules
+
+Edit inbound rules → Add/remove ports
+
+Test connection using SSH or HTTP
+
+Try to connect from blocked IP → Should fail
+📸 Screenshot → Day23_Cloud/security_group.png
+
+Task D: CloudTrail Logging
+
+Enable CloudTrail on AWS
+
+Check logs → Events like login, API calls, config changes
+📸 Screenshot → Day23_Cloud/cloudtrail_logs.png
+
+Task E: Test Encryption
+
+Create S3 bucket → Enable Server-Side Encryption (AES-256)
+
+Upload a test file → Verify encryption
+📸 Screenshot → Day23_Cloud/s3_encryption.png
+
+🔹 5. Key Takeaways
+
+Learned cloud security fundamentals ✅
+
+Configured IAM users, groups, and roles ✅
+
+Managed Security Groups / firewall rules ✅
+
+Enabled CloudTrail logging & encryption ✅
+
+Cloud security is critical for SOC monitoring & incident response ✅
